@@ -6,14 +6,10 @@ location = c("SS","SZ")
 loc_code = 1 
 start_date = "2015-06-01"
 
-# if(typeof(code) == "character"){
-#   symbol = "^SSEC"
-# } else{
-#   symbol = paste(sprintf("%06d", code),location[loc_code],sep=".")
-# }
+
 
 if(typeof(code) != "character"){ 
-  #Indices and US stocks are chracters
+  #Indices and US stocks are characters
   symbol = paste(sprintf("%06d", code),location[loc_code],sep=".")
 } else if(Is_Indice == 1){
   symbol = paste("^",code,sep="") 
