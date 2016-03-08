@@ -27,3 +27,7 @@ for(code in stocks_code){
   }
   )
 }
+
+
+A_list <-data.frame(cbind(stocks_code,real_stocks))
+A_list <- A_list[which(A_list["real_stocks"]==1),]
