@@ -1,6 +1,6 @@
 ##Technical Analysis of Renco 
 
-code = 600005
+code = 600383
 Is_Indice = 0
 location = c("SS","SZ")
 loc_code = 1 
@@ -30,14 +30,14 @@ if(Is_Indice !=1){
 #addADX(n=14,maType="EMA",wilder=TRUE)
 addMACD()
 addBBands()
-addATR()
-#addSAR()
+#addATR()
+addSAR()
 ##Donchian Chanles
-Has_Donchian = 1
+Has_Donchian = 0
 if(Has_Donchian == 1){
 dc <- lag(DonchianChannel(cbind(Hi(get(symbol)), Lo(get(symbol)))))
 addTA(dc$low, on=1, col='green4')
-addTA(dc$high, on=1, col='green4')
+addTA(dc$high, on=1, col='purple')
 }
 ##Moving Averages
 ##Note I haven't work on colors of MA yet 

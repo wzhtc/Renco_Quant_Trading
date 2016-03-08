@@ -1,3 +1,5 @@
+setwd("/Users/renco/GitHub/Renco_Quant_Trading")
+load("A_list.RData")
 
 # c(19,132,146,336,338,362,397,423,425,489,
 #   507,508,547,706,811,854,891,975,988,997,999,1005,1069,1116,
@@ -31,3 +33,4 @@ for(code in stocks_code){
 
 A_list <-data.frame(cbind(stocks_code,real_stocks))
 A_list <- A_list[which(A_list["real_stocks"]==1),]
+A_list <- A_list["stocks_code"]
