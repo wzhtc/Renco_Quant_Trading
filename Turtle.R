@@ -4,9 +4,9 @@ require(quantmod)
 #stocks_code <- seq(600001,603999,by = 1)
 setwd("/Users/renco/GitHub/Renco_Quant_Trading")
 load("A_list.RData")
-stocks_code <- A_list
-#break_out <- rep(0,length.out=length(stocks_code))
-break_out <- rep(0,length.out=dim(stocks_code)[1])
+stocks_code <- as.vector(as.matrix(A_list)) #for looping to saving time
+break_out <- rep(0,length.out=length(stocks_code)) #for vector
+# break_out <- rep(0,length.out=dim(stocks_code)[1]) #for data.frame
 start_date <- "2016-01-01"
 
 for(code in stocks_code){
@@ -37,6 +37,8 @@ for(code in stocks_code){
 potential <- data.frame(cbind(stocks_code,break_out))
 ##Get all the tickers of stocks that have Donchian Break_Out
 potential <- potential[which(potential["break_out"]==1),]
+
+####Add code to save potential
 
 
 

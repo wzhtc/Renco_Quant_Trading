@@ -1,6 +1,6 @@
 ##Technical Analysis of Renco 
 
-code = 600383
+code = 600039
 Is_Indice = 0
 location = c("SS","SZ")
 loc_code = 1 
