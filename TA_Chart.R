@@ -1,10 +1,10 @@
 ##Technical Analysis of Renco 
 
-code = "SSEC"
-Is_Indice = 1
+code = 600005
+Is_Indice = 0
 location = c("SS","SZ")
 loc_code = 1 
-start_date = "2015-06-01"
+start_date = "2016-01-01"
 
 
 
@@ -27,11 +27,24 @@ if(Is_Indice !=1){
   chartSeries(get(code),theme="white",name=symbol)
 }
 ###TA to use
-addADX(n=14,maType="EMA",wilder=TRUE)
+#addADX(n=14,maType="EMA",wilder=TRUE)
 addMACD()
 addBBands()
-addSAR()
+addATR()
+#addSAR()
 ##Donchian Chanles
+Has_Donchian = 1
+if(Has_Donchian == 1){
 dc <- lag(DonchianChannel(cbind(Hi(get(symbol)), Lo(get(symbol)))))
 addTA(dc$low, on=1, col='green4')
 addTA(dc$high, on=1, col='green4')
+}
+##Moving Averages
+##Note I haven't work on colors of MA yet 
+Has_MA = 0
+if(Has_MA == 1)
+{
+addSMA(n=5)
+addSMA(n=10)
+addSMA(n=20)
+}
