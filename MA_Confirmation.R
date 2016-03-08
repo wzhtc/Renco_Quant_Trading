@@ -1,6 +1,7 @@
 ##MA break-out to filter out false Turtle break out
 require(quantmod)
 
+#load(paste("potential",Sys.Date(),sep="_"))
 #use potential from Turtle
 potential <- as.vector(as.matrix(potential[,1]))
 double_break_out <- rep(0,length.out=length(potential)) 

@@ -40,7 +40,7 @@ potential <- potential[which(potential["break_out"]==1),]
 
 ####Add code to save potential
 
-
+save(potential,file=paste("potential",Sys.Date(),sep="_"))
 
 
 
