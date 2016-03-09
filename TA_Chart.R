@@ -1,10 +1,10 @@
 ##Technical Analysis of Renco 
 
-code = 600039
+code = 600988
 Is_Indice = 0
 location = c("SS","SZ")
 loc_code = 1 
-start_date = "2016-01-01"
+start_date = "2015-09-01"
 
 
 
@@ -27,24 +27,26 @@ if(Is_Indice !=1){
   chartSeries(get(code),theme="white",name=symbol)
 }
 ###TA to use
-#addADX(n=14,maType="EMA",wilder=TRUE)
+addADX(n=14,maType="EMA",wilder=TRUE)
 addMACD()
 addBBands()
 #addATR()
 addSAR()
 ##Donchian Chanles
-Has_Donchian = 0
+Has_Donchian = 1
 if(Has_Donchian == 1){
-dc <- lag(DonchianChannel(cbind(Hi(get(symbol)), Lo(get(symbol)))))
-addTA(dc$low, on=1, col='green4')
-addTA(dc$high, on=1, col='purple')
+  dc <- lag(DonchianChannel(cbind(Hi(get(symbol)), Lo(get(symbol)))))
+  addTA(dc$high, on=1, col='purple')
+  addTA(dc$low, on=1, col='green4')
 }
 ##Moving Averages
 ##Note I haven't work on colors of MA yet 
-Has_MA = 0
+Has_MA = 1
 if(Has_MA == 1)
 {
-addSMA(n=5)
-addSMA(n=10)
-addSMA(n=20)
+addSMA(n=10,on=1,with.col = Cl, overlay = TRUE, col = "red")
+addSMA(n=100,on=1,with.col = Cl, overlay = TRUE, col = "cyan")
 }
+
+
+##Take out zero volume days 

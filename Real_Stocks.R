@@ -1,11 +1,6 @@
 setwd("/Users/renco/GitHub/Renco_Quant_Trading")
 load("A_list.RData")
 
-# c(19,132,146,336,338,362,397,423,425,489,
-#   507,508,547,706,811,854,891,975,988,997,999,1005,1069,1116,
-#   1118,1186,1188,1567,1678,1798,1958,3123,3799,3968)
-
-
 ###Detect all tickers that have corresponding stocks in Shanghai Market
 require(quantmod)
 
