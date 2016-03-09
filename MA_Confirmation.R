@@ -3,6 +3,7 @@ require(quantmod)
 
 #load(paste("potential",Sys.Date(),sep="_"))
 #use potential from Turtle
+load(paste(paste("potential",Sys.Date(),sep="_"),"RData",sep="."))
 potential <- as.vector(as.matrix(potential[,1]))
 double_break_out <- rep(0,length.out=length(potential)) 
 order_size <- rep(0,length.out=length(potential)) 
@@ -15,10 +16,12 @@ start_date <- "2015-09-01"
 
 for(code in potential){
   symbol <- "" ##Initiate
-  symbol <- paste(sprintf("%06d", code),"SS",sep=".")
+  symbol <- paste(sprintf("%06d", code),
+                  ifelse(code <= 1000, "SZ","SS"),
+                  sep=".")
   tryCatch({ getSymbols(symbol,from=start_date)
-    ma100 <- SMA(Cl(get(symbol)),n=100) #100 days simple moving average
-    ma10 <- SMA(Cl(get(symbol)),n=10) #10 days simple moving average
+    ma100 <- SMA(Cl(adjustOHLC(get(symbol),use.Adjusted=TRUE)),n=100) #100 days simple moving average
+    ma10 <- SMA(Cl(adjustOHLC(get(symbol),use.Adjusted=TRUE)),n=10) #10 days simple moving average
     if(last(ma10) > last(ma100))
     {double_break_out[which(potential == code)] <- 1
      order_size[which(potential == code)] <- 500/last(ATR(HLC(get(symbol)))$atr)
