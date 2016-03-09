@@ -1,6 +1,6 @@
 ##Technical Analysis of Renco 
 
-code = 600988
+code = 603558
 Is_Indice = 0
 location = c("SS","SZ")
 loc_code = 1 
@@ -22,7 +22,8 @@ getSymbols(symbol,from=start_date) #Fecthing data
 
 #####Chart
 if(Is_Indice !=1){
-  chartSeries(get(symbol),theme="white",name=symbol)
+  chartSeries(adjustOHLC(get(symbol),use.Adjusted=TRUE),
+              theme="white",name=symbol)
 } else {
   chartSeries(get(code),theme="white",name=symbol)
 }
